@@ -2,8 +2,8 @@
 
 > A modern, serverless link bookmarking application built with React and AWS Amplify
 
-[![React](https://img.shields.io/badge/React-18.x-61dafb?logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.x-61dafb?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.x-3178c6?logo=typescript)](https://www.typescriptlang.org/)
 [![AWS Amplify](https://img.shields.io/badge/AWS%20Amplify-Gen%202-ff9900?logo=aws-amplify)](https://docs.amplify.aws/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -45,17 +45,33 @@ cd linkstash
 # Install dependencies
 npm install
 
-# Install Amplify CLI (if not already installed)
-npm install -g @aws-amplify/cli
+# Start the Amplify sandbox for development
+npm run sandbox
 
-# Initialize Amplify sandbox for development
-npx ampx sandbox
-
-# Start the development server
+# In a new terminal, start the development server
 npm start
 ```
 
 The app will be running at `http://localhost:3000`
+
+### First Time Setup
+
+1. **Configure AWS CLI** (if not already done):
+   ```bash
+   aws configure
+   ```
+   Enter your AWS Access Key ID, Secret Access Key, and preferred region.
+
+2. **Start Amplify Sandbox**:
+   ```bash
+   npm run sandbox
+   ```
+   This will deploy the backend resources to your AWS account and generate `amplify_outputs.json`.
+
+3. **Run the Application**:
+   ```bash
+   npm start
+   ```
 
 ---
 
@@ -63,7 +79,7 @@ The app will be running at `http://localhost:3000`
 
 | Layer | Technology |
 |-------|------------|
-| **Frontend** | React 18, TypeScript, CSS Modules |
+| **Frontend** | React 19, TypeScript, CSS Modules |
 | **Authentication** | AWS Cognito |
 | **API** | AWS AppSync (GraphQL) |
 | **Database** | Amazon DynamoDB |
@@ -105,18 +121,17 @@ linkstash/
 npm start         # Start development server
 npm run build     # Build for production
 npm test          # Run tests
-npm run lint      # Run ESLint
-npm run format    # Format code with Prettier
+npm run sandbox   # Start Amplify sandbox
+npm run deploy    # Deploy to AWS
+npm run generate  # Generate GraphQL types
+npm run console   # Open Amplify Console
 ```
 
-### Amplify Commands
+### Environment Setup
 
-```bash
-npx ampx sandbox          # Start local development sandbox
-npx ampx deploy           # Deploy to AWS
-npx ampx generate         # Generate GraphQL types
-npx ampx console          # Open Amplify Console
-```
+The application uses AWS Amplify Gen 2, which generates configuration automatically. After running `npm run sandbox`, the following files are created:
+
+- `amplify_outputs.json` - Backend configuration (auto-generated, gitignored)
 
 ---
 
@@ -125,6 +140,7 @@ npx ampx console          # Open Amplify Console
 See the [Implementation Plan](docs/IMPLEMENTATION_PLAN.md) for detailed development phases.
 
 - [x] Project initialization
+- [x] Phase 1.1: Initialize AWS Amplify Gen 2 Backend
 - [ ] Phase 1: Authentication & Foundation
 - [ ] Phase 2: Core Link Management
 - [ ] Phase 3: Collections & Tags
