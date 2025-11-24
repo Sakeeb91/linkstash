@@ -1,46 +1,164 @@
-# Getting Started with Create React App
+# 🔗 LinkStash
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A modern, serverless link bookmarking application built with React and AWS Amplify
 
-## Available Scripts
+[![React](https://img.shields.io/badge/React-18.x-61dafb?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![AWS Amplify](https://img.shields.io/badge/AWS%20Amplify-Gen%202-ff9900?logo=aws-amplify)](https://docs.amplify.aws/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+LinkStash is a personal link bookmarking tool that helps you save, organize, and discover your bookmarks efficiently. Built on AWS Amplify's serverless infrastructure, it provides a fast, secure, and scalable solution that runs entirely within the AWS Free Tier.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### ✨ Features
 
-### `npm test`
+- 🔐 **Secure Authentication** - Email/password sign-in via AWS Cognito
+- 🔗 **Link Management** - Save, edit, delete, and organize bookmarks
+- 🏷️ **Tagging System** - Flexible tag-based organization
+- 📁 **Collections** - Group related links into collections
+- 🔍 **Smart Search** - Search across titles, descriptions, and tags
+- 📝 **Notes & Annotations** - Add personal notes to bookmarks
+- 🌐 **Auto Metadata** - Automatically fetch title, description, and favicon
+- 📱 **Responsive Design** - Mobile-first, works on all devices
+- 🌙 **Dark Mode** - System-aware theme switching
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🚀 Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js 18+ and npm
+- AWS Account (free tier eligible)
+- AWS CLI configured with credentials
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+```bash
+# Clone the repository
+git clone https://github.com/Sakeeb91/linkstash.git
+cd linkstash
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Install dependencies
+npm install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install Amplify CLI (if not already installed)
+npm install -g @aws-amplify/cli
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Initialize Amplify sandbox for development
+npx ampx sandbox
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Start the development server
+npm start
+```
 
-## Learn More
+The app will be running at `http://localhost:3000`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🏗️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, TypeScript, CSS Modules |
+| **Authentication** | AWS Cognito |
+| **API** | AWS AppSync (GraphQL) |
+| **Database** | Amazon DynamoDB |
+| **Storage** | Amazon S3 |
+| **Functions** | AWS Lambda |
+| **Hosting** | AWS Amplify Hosting |
+
+---
+
+## 📁 Project Structure
+
+```
+linkstash/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Page components (routes)
+│   ├── hooks/          # Custom React hooks
+│   ├── context/        # React context providers
+│   ├── services/       # API service layer
+│   ├── types/          # TypeScript type definitions
+│   ├── styles/         # Global styles and themes
+│   └── utils/          # Utility functions
+├── amplify/
+│   ├── auth/           # Cognito configuration
+│   ├── data/           # GraphQL schema & resolvers
+│   ├── functions/      # Lambda functions
+│   └── storage/        # S3 configuration
+├── docs/               # Documentation
+└── public/             # Static assets
+```
+
+---
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+npm start         # Start development server
+npm run build     # Build for production
+npm test          # Run tests
+npm run lint      # Run ESLint
+npm run format    # Format code with Prettier
+```
+
+### Amplify Commands
+
+```bash
+npx ampx sandbox          # Start local development sandbox
+npx ampx deploy           # Deploy to AWS
+npx ampx generate         # Generate GraphQL types
+npx ampx console          # Open Amplify Console
+```
+
+---
+
+## 📋 Roadmap
+
+See the [Implementation Plan](docs/IMPLEMENTATION_PLAN.md) for detailed development phases.
+
+- [x] Project initialization
+- [ ] Phase 1: Authentication & Foundation
+- [ ] Phase 2: Core Link Management
+- [ ] Phase 3: Collections & Tags
+- [ ] Phase 4: Search & Discovery
+- [ ] Phase 5: Polish & Enhancement
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our contributing guidelines before submitting a PR.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [AWS Amplify](https://docs.amplify.aws/) for the amazing serverless framework
+- [React](https://reactjs.org/) for the UI library
+- All the open-source contributors who make projects like this possible
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/Sakeeb91">Sakeeb91</a>
+</p>
