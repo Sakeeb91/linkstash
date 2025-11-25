@@ -7,10 +7,9 @@
 /**
  * Application metadata
  */
-export const APP_NAME = "LinkStash";
-export const APP_VERSION = "0.1.0";
-export const APP_DESCRIPTION =
-  "A modern, serverless link bookmarking application";
+export const APP_NAME = 'LinkStash';
+export const APP_VERSION = '0.1.0';
+export const APP_DESCRIPTION = 'A modern, serverless link bookmarking application';
 
 /**
  * API and data limits
@@ -43,68 +42,67 @@ export const METADATA_FETCH_DEBOUNCE_MS = 500;
  * Storage keys
  */
 export const STORAGE_KEYS = {
-  THEME: "linkstash_theme",
-  PREFERENCES: "linkstash_preferences",
-  RECENT_SEARCHES: "linkstash_recent_searches",
-  LAST_COLLECTION: "linkstash_last_collection",
+  THEME: 'linkstash_theme',
+  PREFERENCES: 'linkstash_preferences',
+  RECENT_SEARCHES: 'linkstash_recent_searches',
+  LAST_COLLECTION: 'linkstash_last_collection',
 } as const;
 
 /**
  * Route paths
  */
 export const ROUTES = {
-  HOME: "/",
-  DASHBOARD: "/dashboard",
-  COLLECTIONS: "/collections",
-  COLLECTION: "/collections/:id",
-  TAGS: "/tags",
-  TAG: "/tags/:name",
-  SEARCH: "/search",
-  FAVORITES: "/favorites",
-  ARCHIVE: "/archive",
-  SETTINGS: "/settings",
-  LOGIN: "/login",
-  SIGNUP: "/signup",
-  FORGOT_PASSWORD: "/forgot-password",
-  CONFIRM_SIGNUP: "/confirm-signup",
+  HOME: '/',
+  DASHBOARD: '/dashboard',
+  COLLECTIONS: '/collections',
+  COLLECTION: '/collections/:id',
+  TAGS: '/tags',
+  TAG: '/tags/:name',
+  SEARCH: '/search',
+  FAVORITES: '/favorites',
+  ARCHIVE: '/archive',
+  SETTINGS: '/settings',
+  LOGIN: '/login',
+  SIGNUP: '/signup',
+  FORGOT_PASSWORD: '/forgot-password',
+  CONFIRM_SIGNUP: '/confirm-signup',
 } as const;
 
 /**
  * Error messages
  */
 export const ERROR_MESSAGES = {
-  GENERIC: "Something went wrong. Please try again.",
-  NETWORK: "Network error. Please check your connection.",
-  UNAUTHORIZED: "You must be logged in to perform this action.",
-  NOT_FOUND: "The requested resource was not found.",
-  INVALID_URL: "Please enter a valid URL.",
-  TITLE_REQUIRED: "Title is required.",
+  GENERIC: 'Something went wrong. Please try again.',
+  NETWORK: 'Network error. Please check your connection.',
+  UNAUTHORIZED: 'You must be logged in to perform this action.',
+  NOT_FOUND: 'The requested resource was not found.',
+  INVALID_URL: 'Please enter a valid URL.',
+  TITLE_REQUIRED: 'Title is required.',
   TITLE_TOO_LONG: `Title must be ${MAX_TITLE_LENGTH} characters or less.`,
   DESCRIPTION_TOO_LONG: `Description must be ${MAX_DESCRIPTION_LENGTH} characters or less.`,
   NOTES_TOO_LONG: `Notes must be ${MAX_NOTES_LENGTH} characters or less.`,
   TOO_MANY_TAGS: `Maximum ${MAX_TAGS_PER_LINK} tags allowed.`,
-  DUPLICATE_LINK: "This link already exists in your collection.",
+  DUPLICATE_LINK: 'This link already exists in your collection.',
 } as const;
 
 /**
  * Success messages
  */
 export const SUCCESS_MESSAGES = {
-  LINK_CREATED: "Link saved successfully!",
-  LINK_UPDATED: "Link updated successfully!",
-  LINK_DELETED: "Link deleted.",
-  LINK_ARCHIVED: "Link archived.",
-  LINK_RESTORED: "Link restored.",
-  LINK_FAVORITED: "Added to favorites.",
-  LINK_UNFAVORITED: "Removed from favorites.",
-  COLLECTION_CREATED: "Collection created!",
-  COLLECTION_UPDATED: "Collection updated!",
-  COLLECTION_DELETED: "Collection deleted.",
-  TAG_CREATED: "Tag created!",
-  TAG_DELETED: "Tag deleted.",
-  SETTINGS_SAVED: "Settings saved!",
-  COPIED_TO_CLIPBOARD: "Copied to clipboard!",
-  EXPORT_SUCCESS: "Export completed!",
-  IMPORT_SUCCESS: "Import completed!",
+  LINK_CREATED: 'Link saved successfully!',
+  LINK_UPDATED: 'Link updated successfully!',
+  LINK_DELETED: 'Link deleted.',
+  LINK_ARCHIVED: 'Link archived.',
+  LINK_RESTORED: 'Link restored.',
+  LINK_FAVORITED: 'Added to favorites.',
+  LINK_UNFAVORITED: 'Removed from favorites.',
+  COLLECTION_CREATED: 'Collection created!',
+  COLLECTION_UPDATED: 'Collection updated!',
+  COLLECTION_DELETED: 'Collection deleted.',
+  TAG_CREATED: 'Tag created!',
+  TAG_DELETED: 'Tag deleted.',
+  SETTINGS_SAVED: 'Settings saved!',
+  COPIED_TO_CLIPBOARD: 'Copied to clipboard!',
+  EXPORT_SUCCESS: 'Export completed!',
+  IMPORT_SUCCESS: 'Import completed!',
 } as const;
-

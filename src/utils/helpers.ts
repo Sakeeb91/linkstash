@@ -4,7 +4,7 @@
  * Common utility functions used throughout the application.
  */
 
-import { URL_PATTERN, COLOR_HEX_PATTERN } from "./constants";
+import { URL_PATTERN, COLOR_HEX_PATTERN } from './constants';
 
 /**
  * Validate a URL string
@@ -26,7 +26,7 @@ export function isValidHexColor(color: string): boolean {
 export function extractDomain(url: string): string {
   try {
     const urlObj = new URL(url);
-    return urlObj.hostname.replace("www.", "");
+    return urlObj.hostname.replace('www.', '');
   } catch {
     return url;
   }
@@ -42,22 +42,22 @@ export function formatDate(dateString: string): string {
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
   if (diffDays === 0) {
-    return "Today";
+    return 'Today';
   } else if (diffDays === 1) {
-    return "Yesterday";
+    return 'Yesterday';
   } else if (diffDays < 7) {
     return `${diffDays} days ago`;
   } else if (diffDays < 30) {
     const weeks = Math.floor(diffDays / 7);
-    return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
+    return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
   } else if (diffDays < 365) {
     const months = Math.floor(diffDays / 30);
-    return `${months} month${months > 1 ? "s" : ""} ago`;
+    return `${months} month${months > 1 ? 's' : ''} ago`;
   } else {
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     });
   }
 }
@@ -74,7 +74,7 @@ export function formatRelativeTime(dateString: string): string {
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
   if (diffMins < 1) {
-    return "Just now";
+    return 'Just now';
   } else if (diffMins < 60) {
     return `${diffMins}m ago`;
   } else if (diffHours < 24) {
@@ -91,7 +91,7 @@ export function formatRelativeTime(dateString: string): string {
  */
 export function truncate(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength - 3) + "...";
+  return text.slice(0, maxLength - 3) + '...';
 }
 
 /**
@@ -101,9 +101,9 @@ export function slugify(text: string): string {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 /**
@@ -129,13 +129,13 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     return true;
   } catch {
     // Fallback for older browsers
-    const textarea = document.createElement("textarea");
+    const textarea = document.createElement('textarea');
     textarea.value = text;
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
     document.body.appendChild(textarea);
     textarea.select();
-    const success = document.execCommand("copy");
+    const success = document.execCommand('copy');
     document.body.removeChild(textarea);
     return success;
   }
@@ -151,10 +151,7 @@ export function generateId(): string {
 /**
  * Group array items by a key
  */
-export function groupBy<T>(
-  array: T[],
-  keyFn: (item: T) => string
-): Record<string, T[]> {
+export function groupBy<T>(array: T[], keyFn: (item: T) => string): Record<string, T[]> {
   return array.reduce(
     (groups, item) => {
       const key = keyFn(item);
@@ -170,13 +167,13 @@ export function groupBy<T>(
 /**
  * Get contrast color (black or white) for a given hex background
  */
-export function getContrastColor(hexColor: string): "#000000" | "#ffffff" {
-  const hex = hexColor.replace("#", "");
+export function getContrastColor(hexColor: string): '#000000' | '#ffffff' {
+  const hex = hexColor.replace('#', '');
   const r = parseInt(hex.substr(0, 2), 16);
   const g = parseInt(hex.substr(2, 2), 16);
   const b = parseInt(hex.substr(4, 2), 16);
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.5 ? "#000000" : "#ffffff";
+  return luminance > 0.5 ? '#000000' : '#ffffff';
 }
 
 /**
@@ -184,7 +181,7 @@ export function getContrastColor(hexColor: string): "#000000" | "#ffffff" {
  */
 export function parseTags(tagString: string): string[] {
   return tagString
-    .split(",")
+    .split(',')
     .map((tag) => tag.trim().toLowerCase())
     .filter((tag) => tag.length > 0)
     .filter((tag, index, self) => self.indexOf(tag) === index);
@@ -193,21 +190,16 @@ export function parseTags(tagString: string): string[] {
 /**
  * Sort links by a given field
  */
-export function sortBy<T>(
-  array: T[],
-  key: keyof T,
-  order: "asc" | "desc" = "desc"
-): T[] {
+export function sortBy<T>(array: T[], key: keyof T, order: 'asc' | 'desc' = 'desc'): T[] {
   return [...array].sort((a, b) => {
     const aVal = a[key];
     const bVal = b[key];
 
-    if (aVal == null) return order === "asc" ? -1 : 1;
-    if (bVal == null) return order === "asc" ? 1 : -1;
+    if (aVal == null) return order === 'asc' ? -1 : 1;
+    if (bVal == null) return order === 'asc' ? 1 : -1;
 
-    if (aVal < bVal) return order === "asc" ? -1 : 1;
-    if (aVal > bVal) return order === "asc" ? 1 : -1;
+    if (aVal < bVal) return order === 'asc' ? -1 : 1;
+    if (aVal > bVal) return order === 'asc' ? 1 : -1;
     return 0;
   });
 }
-
