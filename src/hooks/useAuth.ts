@@ -5,7 +5,7 @@
  * Wraps the AuthContext with additional utility functions.
  */
 
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from '../context/AuthContext';
 
 /**
  * Hook for accessing authentication functionality
@@ -18,4 +18,3 @@ export function useAuth() {
 }
 
 export default useAuth;
-
