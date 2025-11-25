@@ -32,7 +32,12 @@
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.18.0",
-    "@aws-amplify/backend-cli": "^1.5.3"
+    "@aws-amplify/backend-cli": "^1.5.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,12 +47,20 @@
     "sandbox": "npx ampx sandbox",
     "deploy": "npx ampx deploy",
     "generate": "npx ampx generate graphql-client-code",
-    "console": "npx ampx console"
+    "console": "npx ampx console",
+    "prepare": "husky",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
     ]
   },
   "browserslist": {
