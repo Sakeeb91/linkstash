@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# AWS Amplify
+amplify/
+.amplify/
+amplify_outputs.json
+amplify_outputs.d.ts
+
+# Config files
+*.config.js
+*.config.ts
+
+# Test coverage
+coverage/
+
+# IDE
+.idea/
+.vscode/
+
