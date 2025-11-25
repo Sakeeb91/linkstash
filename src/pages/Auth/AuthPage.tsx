@@ -5,38 +5,33 @@
  * Handles routing between different auth states.
  */
 
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import {
-  LoginForm,
-  SignupForm,
-  ConfirmSignup,
-  ForgotPassword,
-} from "../../components/auth";
-import { ROUTES, APP_NAME } from "../../utils/constants";
-import "../../styles/auth.css";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { LoginForm, SignupForm, ConfirmSignup, ForgotPassword } from '../../components/auth';
+import { ROUTES, APP_NAME } from '../../utils/constants';
+import '../../styles/auth.css';
 
-type AuthView = "login" | "signup" | "confirm" | "forgot-password";
+type AuthView = 'login' | 'signup' | 'confirm' | 'forgot-password';
 
 export function AuthPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, isLoading } = useAuth();
-  const [view, setView] = useState<AuthView>("login");
-  const [pendingEmail, setPendingEmail] = useState<string>("");
+  const [view, setView] = useState<AuthView>('login');
+  const [pendingEmail, setPendingEmail] = useState<string>('');
 
   // Determine initial view based on route
   useEffect(() => {
     const path = location.pathname;
     if (path === ROUTES.SIGNUP) {
-      setView("signup");
+      setView('signup');
     } else if (path === ROUTES.FORGOT_PASSWORD) {
-      setView("forgot-password");
+      setView('forgot-password');
     } else if (path === ROUTES.CONFIRM_SIGNUP) {
-      setView("confirm");
+      setView('confirm');
     } else {
-      setView("login");
+      setView('login');
     }
   }, [location.pathname]);
 
@@ -68,52 +63,49 @@ export function AuthPage() {
   }
 
   const handleSwitchToSignup = () => {
-    setView("signup");
+    setView('signup');
     navigate(ROUTES.SIGNUP);
   };
 
   const handleSwitchToLogin = () => {
-    setView("login");
+    setView('login');
     navigate(ROUTES.LOGIN);
   };
 
   const handleSwitchToForgotPassword = () => {
-    setView("forgot-password");
+    setView('forgot-password');
     navigate(ROUTES.FORGOT_PASSWORD);
   };
 
   const handleNeedConfirmation = (email: string) => {
     setPendingEmail(email);
-    setView("confirm");
+    setView('confirm');
     navigate(ROUTES.CONFIRM_SIGNUP);
   };
 
   const handleSignupSuccess = (email: string) => {
     setPendingEmail(email);
-    setView("confirm");
+    setView('confirm');
     navigate(ROUTES.CONFIRM_SIGNUP);
   };
 
   const handleConfirmSuccess = () => {
-    setView("login");
+    setView('login');
     navigate(ROUTES.LOGIN);
   };
 
   const handleResetSuccess = () => {
-    setView("login");
+    setView('login');
     navigate(ROUTES.LOGIN);
   };
 
   const renderForm = () => {
     switch (view) {
-      case "signup":
+      case 'signup':
         return (
-          <SignupForm
-            onSwitchToLogin={handleSwitchToLogin}
-            onSignupSuccess={handleSignupSuccess}
-          />
+          <SignupForm onSwitchToLogin={handleSwitchToLogin} onSignupSuccess={handleSignupSuccess} />
         );
-      case "confirm":
+      case 'confirm':
         return (
           <ConfirmSignup
             email={pendingEmail}
@@ -121,12 +113,9 @@ export function AuthPage() {
             onBackToLogin={handleSwitchToLogin}
           />
         );
-      case "forgot-password":
+      case 'forgot-password':
         return (
-          <ForgotPassword
-            onBackToLogin={handleSwitchToLogin}
-            onResetSuccess={handleResetSuccess}
-          />
+          <ForgotPassword onBackToLogin={handleSwitchToLogin} onResetSuccess={handleResetSuccess} />
         );
       default:
         return (
@@ -158,4 +147,3 @@ export function AuthPage() {
 }
 
 export default AuthPage;
-

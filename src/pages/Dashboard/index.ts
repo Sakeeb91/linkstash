@@ -2,5 +2,4 @@
  * Dashboard Pages Barrel File
  */
 
-export { DashboardPage } from "./DashboardPage";
-
+export { DashboardPage } from './DashboardPage';

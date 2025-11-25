@@ -5,10 +5,10 @@
  * This is a placeholder that will be expanded in future issues.
  */
 
-import React from "react";
-import { useAuth } from "../../hooks/useAuth";
-import { APP_NAME } from "../../utils/constants";
-import "../../styles/dashboard.css";
+import React from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { APP_NAME } from '../../utils/constants';
+import '../../styles/dashboard.css';
 
 export function DashboardPage() {
   const { user, handleSignOut } = useAuth();
@@ -17,7 +17,7 @@ export function DashboardPage() {
     try {
       await handleSignOut();
     } catch (error) {
-      console.error("Error signing out:", error);
+      console.error('Error signing out:', error);
     }
   };
 
@@ -42,7 +42,7 @@ export function DashboardPage() {
           <p className="welcome-subtitle">
             {user?.preferredUsername
               ? `Hello, ${user.preferredUsername}!`
-              : "Your personal bookmark manager"}
+              : 'Your personal bookmark manager'}
           </p>
         </div>
 
@@ -77,4 +77,3 @@ export function DashboardPage() {
 }
 
 export default DashboardPage;
-
