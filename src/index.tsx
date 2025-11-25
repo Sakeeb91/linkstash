@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Amplify } from "aws-amplify";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import amplifyConfig from "./amplifyconfiguration";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Amplify } from 'aws-amplify';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import amplifyConfig from './amplifyconfiguration';
 
 /**
  * Configure Amplify with backend outputs
@@ -16,9 +16,9 @@ import amplifyConfig from "./amplifyconfiguration";
 if (Object.keys(amplifyConfig).length > 0) {
   try {
     Amplify.configure(amplifyConfig as Parameters<typeof Amplify.configure>[0]);
-    console.log("Amplify configured successfully");
+    // Amplify configured successfully
   } catch (error) {
-    console.warn("Failed to configure Amplify:", error);
+    console.warn('Failed to configure Amplify:', error);
   }
 } else {
   console.warn(
@@ -26,9 +26,7 @@ if (Object.keys(amplifyConfig).length > 0) {
   );
 }
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
