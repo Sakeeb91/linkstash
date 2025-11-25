@@ -5,10 +5,10 @@
  * Redirects unauthenticated users to the login page.
  */
 
-import React, { type ReactNode } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import { ROUTES } from "../../utils/constants";
+import React, { type ReactNode } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { ROUTES } from '../../utils/constants';
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -51,4 +51,3 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 }
 
 export default ProtectedRoute;
-

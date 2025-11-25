@@ -4,5 +4,4 @@
  * Re-exports all layout components for convenient imports.
  */
 
-export { ProtectedRoute } from "./ProtectedRoute";
-
+export { ProtectedRoute } from './ProtectedRoute';
