@@ -97,17 +97,11 @@ export interface LinkFilters {
 /**
  * Sort options for links
  */
-export type LinkSortField =
-  | "createdAt"
-  | "updatedAt"
-  | "title"
-  | "clickCount"
-  | "lastClickedAt";
+export type LinkSortField = 'createdAt' | 'updatedAt' | 'title' | 'clickCount' | 'lastClickedAt';
 
-export type SortOrder = "asc" | "desc";
+export type SortOrder = 'asc' | 'desc';
 
 export interface LinkSortOptions {
   field: LinkSortField;
   order: SortOrder;
 }
-

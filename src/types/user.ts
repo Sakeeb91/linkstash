@@ -29,7 +29,7 @@ export interface UserPreferences {
   /** Default sort field for links */
   defaultSortField: string;
   /** Default sort order */
-  defaultSortOrder: "asc" | "desc";
+  defaultSortOrder: 'asc' | 'desc';
   /** Default view mode */
   defaultViewMode: ViewMode;
   /** Whether to auto-extract metadata */
@@ -41,21 +41,21 @@ export interface UserPreferences {
 /**
  * Theme preference options
  */
-export type ThemePreference = "light" | "dark" | "system";
+export type ThemePreference = 'light' | 'dark' | 'system';
 
 /**
  * View mode options
  */
-export type ViewMode = "grid" | "list" | "compact";
+export type ViewMode = 'grid' | 'list' | 'compact';
 
 /**
  * Default user preferences
  */
 export const DEFAULT_USER_PREFERENCES: UserPreferences = {
-  theme: "system",
-  defaultSortField: "createdAt",
-  defaultSortOrder: "desc",
-  defaultViewMode: "grid",
+  theme: 'system',
+  defaultSortField: 'createdAt',
+  defaultSortOrder: 'desc',
+  defaultViewMode: 'grid',
   autoExtractMetadata: true,
   showArchived: false,
 };
@@ -86,4 +86,3 @@ export interface SignInInput {
   email: string;
   password: string;
 }
-

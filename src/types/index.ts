@@ -18,7 +18,7 @@ export type {
   LinkSortField,
   SortOrder,
   LinkSortOptions,
-} from "./link";
+} from './link';
 
 // Collection types
 export type {
@@ -26,18 +26,12 @@ export type {
   CreateCollectionInput,
   UpdateCollectionInput,
   CollectionWithCount,
-} from "./collection";
-export { COLLECTION_COLORS, COLLECTION_ICONS } from "./collection";
+} from './collection';
+export { COLLECTION_COLORS, COLLECTION_ICONS } from './collection';
 
 // Tag types
-export type {
-  Tag,
-  CreateTagInput,
-  UpdateTagInput,
-  TagWithCount,
-  TagSuggestion,
-} from "./tag";
-export { TAG_COLORS } from "./tag";
+export type { Tag, CreateTagInput, UpdateTagInput, TagWithCount, TagSuggestion } from './tag';
+export { TAG_COLORS } from './tag';
 
 // User types
 export type {
@@ -48,6 +42,5 @@ export type {
   AuthState,
   SignUpInput,
   SignInInput,
-} from "./user";
-export { DEFAULT_USER_PREFERENCES } from "./user";
-
+} from './user';
+export { DEFAULT_USER_PREFERENCES } from './user';

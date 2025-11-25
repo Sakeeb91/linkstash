@@ -58,40 +58,39 @@ export interface CollectionWithCount extends Collection {
  * Default collection colors
  */
 export const COLLECTION_COLORS = [
-  "#EF4444", // Red
-  "#F97316", // Orange
-  "#EAB308", // Yellow
-  "#22C55E", // Green
-  "#14B8A6", // Teal
-  "#3B82F6", // Blue
-  "#8B5CF6", // Purple
-  "#EC4899", // Pink
-  "#6B7280", // Gray
+  '#EF4444', // Red
+  '#F97316', // Orange
+  '#EAB308', // Yellow
+  '#22C55E', // Green
+  '#14B8A6', // Teal
+  '#3B82F6', // Blue
+  '#8B5CF6', // Purple
+  '#EC4899', // Pink
+  '#6B7280', // Gray
 ] as const;
 
 /**
  * Default collection icons (emojis)
  */
 export const COLLECTION_ICONS = [
-  "📁",
-  "📂",
-  "🗂️",
-  "📚",
-  "📖",
-  "🔖",
-  "💼",
-  "🎯",
-  "⭐",
-  "❤️",
-  "🏠",
-  "💡",
-  "🔧",
-  "🎨",
-  "🎵",
-  "🎬",
-  "📷",
-  "🌐",
-  "💻",
-  "📱",
+  '📁',
+  '📂',
+  '🗂️',
+  '📚',
+  '📖',
+  '🔖',
+  '💼',
+  '🎯',
+  '⭐',
+  '❤️',
+  '🏠',
+  '💡',
+  '🔧',
+  '🎨',
+  '🎵',
+  '🎬',
+  '📷',
+  '🌐',
+  '💻',
+  '📱',
 ] as const;
-

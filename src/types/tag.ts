@@ -50,15 +50,15 @@ export interface TagWithCount extends Tag {
  * Default tag colors for suggestions
  */
 export const TAG_COLORS = [
-  "#DC2626", // Red
-  "#EA580C", // Orange
-  "#CA8A04", // Amber
-  "#16A34A", // Green
-  "#0891B2", // Cyan
-  "#2563EB", // Blue
-  "#7C3AED", // Violet
-  "#DB2777", // Pink
-  "#57534E", // Stone
+  '#DC2626', // Red
+  '#EA580C', // Orange
+  '#CA8A04', // Amber
+  '#16A34A', // Green
+  '#0891B2', // Cyan
+  '#2563EB', // Blue
+  '#7C3AED', // Violet
+  '#DB2777', // Pink
+  '#57534E', // Stone
 ] as const;
 
 /**
@@ -68,4 +68,3 @@ export interface TagSuggestion {
   tag: Tag;
   relevanceScore: number;
 }
-
