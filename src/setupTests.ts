@@ -8,11 +8,11 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 
 // Polyfill TextEncoder/TextDecoder for Node.js test environment
 // Required by react-router v7
-import { TextEncoder, TextDecoder } from "util";
+import { TextEncoder, TextDecoder } from 'util';
 
 Object.assign(global, {
   TextEncoder,
@@ -20,7 +20,7 @@ Object.assign(global, {
 });
 
 // Mock window.matchMedia for components that use media queries
-Object.defineProperty(window, "matchMedia", {
+Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query: string) => ({
     matches: false,

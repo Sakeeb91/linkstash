@@ -4,14 +4,14 @@
  * Main application component with routing and authentication.
  */
 
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import { ProtectedRoute } from "./components/layout";
-import { AuthPage } from "./pages/Auth";
-import { DashboardPage } from "./pages/Dashboard";
-import { ROUTES } from "./utils/constants";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/layout';
+import { AuthPage } from './pages/Auth';
+import { DashboardPage } from './pages/Dashboard';
+import { ROUTES } from './utils/constants';
+import './App.css';
 
 /**
  * Main App Component
