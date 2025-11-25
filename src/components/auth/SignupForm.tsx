@@ -4,8 +4,8 @@
  * Handles new user registration with email validation.
  */
 
-import React, { useState, type FormEvent } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, type FormEvent } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface SignupFormProps {
   onSwitchToLogin: () => void;
@@ -14,31 +14,31 @@ interface SignupFormProps {
 
 export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps) {
   const { handleSignUp, isLoading, error, clearError } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [preferredUsername, setPreferredUsername] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [preferredUsername, setPreferredUsername] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const validatePassword = (): boolean => {
     if (password.length < 8) {
-      setValidationError("Password must be at least 8 characters long.");
+      setValidationError('Password must be at least 8 characters long.');
       return false;
     }
     if (!/[a-z]/.test(password)) {
-      setValidationError("Password must contain at least one lowercase letter.");
+      setValidationError('Password must contain at least one lowercase letter.');
       return false;
     }
     if (!/[A-Z]/.test(password)) {
-      setValidationError("Password must contain at least one uppercase letter.");
+      setValidationError('Password must contain at least one uppercase letter.');
       return false;
     }
     if (!/[0-9]/.test(password)) {
-      setValidationError("Password must contain at least one number.");
+      setValidationError('Password must contain at least one number.');
       return false;
     }
     if (password !== confirmPassword) {
-      setValidationError("Passwords do not match.");
+      setValidationError('Passwords do not match.');
       return false;
     }
     setValidationError(null);
@@ -60,7 +60,7 @@ export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps
         preferredUsername: preferredUsername || undefined,
       });
 
-      if (result.nextStep?.signUpStep === "CONFIRM_SIGN_UP") {
+      if (result.nextStep?.signUpStep === 'CONFIRM_SIGN_UP') {
         onSignupSuccess(email);
       }
     } catch {
@@ -97,8 +97,7 @@ export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps
 
         <div className="form-group">
           <label htmlFor="username" className="form-label">
-            Display Name{" "}
-            <span className="form-label-optional">(optional)</span>
+            Display Name <span className="form-label-optional">(optional)</span>
           </label>
           <input
             type="text"
@@ -127,9 +126,7 @@ export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps
             autoComplete="new-password"
             disabled={isLoading}
           />
-          <p className="form-hint">
-            At least 8 characters with uppercase, lowercase, and numbers
-          </p>
+          <p className="form-hint">At least 8 characters with uppercase, lowercase, and numbers</p>
         </div>
 
         <div className="form-group">
@@ -150,18 +147,14 @@ export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps
         </div>
 
         <button type="submit" className="auth-button primary" disabled={isLoading}>
-          {isLoading ? "Creating account..." : "Create Account"}
+          {isLoading ? 'Creating account...' : 'Create Account'}
         </button>
       </form>
 
       <div className="auth-footer">
         <p>
-          Already have an account?{" "}
-          <button
-            type="button"
-            onClick={onSwitchToLogin}
-            className="auth-link"
-          >
+          Already have an account?{' '}
+          <button type="button" onClick={onSwitchToLogin} className="auth-link">
             Sign in
           </button>
         </p>
@@ -171,4 +164,3 @@ export function SignupForm({ onSwitchToLogin, onSignupSuccess }: SignupFormProps
 }
 
 export default SignupForm;
-

@@ -4,33 +4,25 @@
  * Handles password reset flow with email verification.
  */
 
-import React, { useState, type FormEvent } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, type FormEvent } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface ForgotPasswordProps {
   onBackToLogin: () => void;
   onResetSuccess: () => void;
 }
 
-type ResetStep = "request" | "confirm";
+type ResetStep = 'request' | 'confirm';
 
-export function ForgotPassword({
-  onBackToLogin,
-  onResetSuccess,
-}: ForgotPasswordProps) {
-  const {
-    handleForgotPassword,
-    handleConfirmResetPassword,
-    isLoading,
-    error,
-    clearError,
-  } = useAuth();
+export function ForgotPassword({ onBackToLogin, onResetSuccess }: ForgotPasswordProps) {
+  const { handleForgotPassword, handleConfirmResetPassword, isLoading, error, clearError } =
+    useAuth();
 
-  const [step, setStep] = useState<ResetStep>("request");
-  const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [step, setStep] = useState<ResetStep>('request');
+  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleRequestSubmit = async (e: FormEvent) => {
@@ -39,7 +31,7 @@ export function ForgotPassword({
 
     try {
       await handleForgotPassword(email);
-      setStep("confirm");
+      setStep('confirm');
     } catch {
       // Error is handled by context
     }
@@ -47,23 +39,23 @@ export function ForgotPassword({
 
   const validatePassword = (): boolean => {
     if (newPassword.length < 8) {
-      setValidationError("Password must be at least 8 characters long.");
+      setValidationError('Password must be at least 8 characters long.');
       return false;
     }
     if (!/[a-z]/.test(newPassword)) {
-      setValidationError("Password must contain at least one lowercase letter.");
+      setValidationError('Password must contain at least one lowercase letter.');
       return false;
     }
     if (!/[A-Z]/.test(newPassword)) {
-      setValidationError("Password must contain at least one uppercase letter.");
+      setValidationError('Password must contain at least one uppercase letter.');
       return false;
     }
     if (!/[0-9]/.test(newPassword)) {
-      setValidationError("Password must contain at least one number.");
+      setValidationError('Password must contain at least one number.');
       return false;
     }
     if (newPassword !== confirmPassword) {
-      setValidationError("Passwords do not match.");
+      setValidationError('Passwords do not match.');
       return false;
     }
     setValidationError(null);
@@ -88,13 +80,11 @@ export function ForgotPassword({
 
   const displayError = validationError || error;
 
-  if (step === "request") {
+  if (step === 'request') {
     return (
       <div className="auth-form-container">
         <h2 className="auth-title">Reset Password</h2>
-        <p className="auth-subtitle">
-          Enter your email and we'll send you a reset code
-        </p>
+        <p className="auth-subtitle">Enter your email and we'll send you a reset code</p>
 
         <form onSubmit={handleRequestSubmit} className="auth-form">
           {displayError && <div className="auth-error">{displayError}</div>}
@@ -116,22 +106,14 @@ export function ForgotPassword({
             />
           </div>
 
-          <button
-            type="submit"
-            className="auth-button primary"
-            disabled={isLoading}
-          >
-            {isLoading ? "Sending..." : "Send Reset Code"}
+          <button type="submit" className="auth-button primary" disabled={isLoading}>
+            {isLoading ? 'Sending...' : 'Send Reset Code'}
           </button>
         </form>
 
         <div className="auth-footer">
           <p>
-            <button
-              type="button"
-              onClick={onBackToLogin}
-              className="auth-link"
-            >
+            <button type="button" onClick={onBackToLogin} className="auth-link">
               ← Back to sign in
             </button>
           </p>
@@ -183,9 +165,7 @@ export function ForgotPassword({
             autoComplete="new-password"
             disabled={isLoading}
           />
-          <p className="form-hint">
-            At least 8 characters with uppercase, lowercase, and numbers
-          </p>
+          <p className="form-hint">At least 8 characters with uppercase, lowercase, and numbers</p>
         </div>
 
         <div className="form-group">
@@ -205,22 +185,14 @@ export function ForgotPassword({
           />
         </div>
 
-        <button
-          type="submit"
-          className="auth-button primary"
-          disabled={isLoading}
-        >
-          {isLoading ? "Resetting..." : "Reset Password"}
+        <button type="submit" className="auth-button primary" disabled={isLoading}>
+          {isLoading ? 'Resetting...' : 'Reset Password'}
         </button>
       </form>
 
       <div className="auth-footer">
         <p>
-          <button
-            type="button"
-            onClick={onBackToLogin}
-            className="auth-link"
-          >
+          <button type="button" onClick={onBackToLogin} className="auth-link">
             ← Back to sign in
           </button>
         </p>
@@ -230,4 +202,3 @@ export function ForgotPassword({
 }
 
 export default ForgotPassword;
-

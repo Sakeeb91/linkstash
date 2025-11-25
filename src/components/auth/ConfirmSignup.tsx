@@ -4,8 +4,8 @@
  * Handles email verification after signup.
  */
 
-import React, { useState, type FormEvent } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, type FormEvent } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface ConfirmSignupProps {
   email: string;
@@ -13,14 +13,9 @@ interface ConfirmSignupProps {
   onBackToLogin: () => void;
 }
 
-export function ConfirmSignup({
-  email,
-  onConfirmSuccess,
-  onBackToLogin,
-}: ConfirmSignupProps) {
-  const { handleConfirmSignUp, handleResendCode, isLoading, error, clearError } =
-    useAuth();
-  const [code, setCode] = useState("");
+export function ConfirmSignup({ email, onConfirmSuccess, onBackToLogin }: ConfirmSignupProps) {
+  const { handleConfirmSignUp, handleResendCode, isLoading, error, clearError } = useAuth();
+  const [code, setCode] = useState('');
   const [resendMessage, setResendMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -42,7 +37,7 @@ export function ConfirmSignup({
 
     try {
       await handleResendCode(email);
-      setResendMessage("A new verification code has been sent to your email.");
+      setResendMessage('A new verification code has been sent to your email.');
     } catch {
       // Error is handled by context
     }
@@ -78,7 +73,7 @@ export function ConfirmSignup({
         </div>
 
         <button type="submit" className="auth-button primary" disabled={isLoading}>
-          {isLoading ? "Verifying..." : "Verify Email"}
+          {isLoading ? 'Verifying...' : 'Verify Email'}
         </button>
 
         <button
@@ -93,11 +88,7 @@ export function ConfirmSignup({
 
       <div className="auth-footer">
         <p>
-          <button
-            type="button"
-            onClick={onBackToLogin}
-            className="auth-link"
-          >
+          <button type="button" onClick={onBackToLogin} className="auth-link">
             ← Back to sign in
           </button>
         </p>
@@ -107,4 +98,3 @@ export function ConfirmSignup({
 }
 
 export default ConfirmSignup;
-

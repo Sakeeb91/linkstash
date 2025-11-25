@@ -4,8 +4,8 @@
  * Handles user sign-in with email and password.
  */
 
-import React, { useState, type FormEvent } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, type FormEvent } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface LoginFormProps {
   onSwitchToSignup: () => void;
@@ -19,8 +19,8 @@ export function LoginForm({
   onNeedConfirmation,
 }: LoginFormProps) {
   const { handleSignIn, isLoading, error, clearError } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -30,12 +30,12 @@ export function LoginForm({
       const result = await handleSignIn({ email, password });
 
       // Check if user needs to confirm their account
-      if (result.nextStep?.signInStep === "CONFIRM_SIGN_UP") {
+      if (result.nextStep?.signInStep === 'CONFIRM_SIGN_UP') {
         onNeedConfirmation(email);
       }
     } catch (err) {
       // Check if the error indicates unconfirmed user
-      if (err instanceof Error && err.message.includes("not confirmed")) {
+      if (err instanceof Error && err.message.includes('not confirmed')) {
         onNeedConfirmation(email);
       }
       // Error is handled by context
@@ -84,27 +84,19 @@ export function LoginForm({
           />
         </div>
 
-        <button
-          type="button"
-          onClick={onSwitchToForgotPassword}
-          className="forgot-password-link"
-        >
+        <button type="button" onClick={onSwitchToForgotPassword} className="forgot-password-link">
           Forgot your password?
         </button>
 
         <button type="submit" className="auth-button primary" disabled={isLoading}>
-          {isLoading ? "Signing in..." : "Sign In"}
+          {isLoading ? 'Signing in...' : 'Sign In'}
         </button>
       </form>
 
       <div className="auth-footer">
         <p>
-          Don't have an account?{" "}
-          <button
-            type="button"
-            onClick={onSwitchToSignup}
-            className="auth-link"
-          >
+          Don't have an account?{' '}
+          <button type="button" onClick={onSwitchToSignup} className="auth-link">
             Sign up
           </button>
         </p>
@@ -114,4 +106,3 @@ export function LoginForm({
 }
 
 export default LoginForm;
-
