@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# AWS Amplify
+amplify/
+.amplify/
+amplify_outputs.json
+amplify_outputs.d.ts
+
+# Package lock files
+package-lock.json
+yarn.lock
+
+# IDE
+.idea/
+.vscode/
+
+# Test coverage
+coverage/
+
+# Generated files
+*.min.js
+*.min.css
+
