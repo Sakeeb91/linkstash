@@ -34,7 +34,7 @@
 .auth-background-pattern {
   position: absolute;
   inset: -50%;
-  background-image: 
+  background-image:
     radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
@@ -42,7 +42,8 @@
 }
 
 @keyframes backgroundPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
@@ -86,7 +87,7 @@
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -335,4 +336,3 @@
     font-size: 1.25rem;
   }
 }
-
