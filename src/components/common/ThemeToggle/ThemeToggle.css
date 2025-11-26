@@ -1,0 +1,226 @@
+/**
+ * Theme Toggle Styles
+ *
+ * Styles for the theme toggle button and selector components.
+ */
+
+/* ============================================
+ * Base Toggle Button
+ * ============================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.theme-toggle--button {
+  position: relative;
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-hover-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition-all);
+  overflow: hidden;
+}
+
+.theme-toggle--button:hover {
+  background-color: var(--color-active-bg);
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.theme-toggle--button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+ * Icon Styles
+ * ============================================ */
+
+.theme-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: var(--transition-transform);
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  transition: var(--transition-all);
+}
+
+.theme-toggle-icon--light {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle-icon--dark {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Dark theme: show sun, hide moon */
+[data-theme='dark'] .theme-toggle-icon--light {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme='dark'] .theme-toggle-icon--dark {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* ============================================
+ * Size Variants
+ * ============================================ */
+
+.theme-toggle--sm {
+  padding: var(--space-1-5);
+}
+
+.theme-toggle--sm .theme-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.theme-toggle--md {
+  padding: var(--space-2);
+}
+
+.theme-toggle--md .theme-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.theme-toggle--lg {
+  padding: var(--space-2-5);
+}
+
+.theme-toggle--lg .theme-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ============================================
+ * Toggle Text Label
+ * ============================================ */
+
+.theme-toggle-text {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  margin-left: var(--space-6);
+}
+
+.theme-toggle-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+ * Dropdown Variant
+ * ============================================ */
+
+.theme-toggle--dropdown {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.theme-toggle-select {
+  appearance: none;
+  padding: var(--space-2) var(--space-8) var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-all);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-2) center;
+}
+
+.theme-toggle-select:hover {
+  border-color: var(--color-border-hover);
+}
+
+.theme-toggle-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ============================================
+ * Theme Selector (Button Group)
+ * ============================================ */
+
+.theme-selector {
+  display: inline-flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg);
+}
+
+.theme-selector-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.theme-selector-option:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-hover-bg);
+}
+
+.theme-selector-option--active {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-selector-option:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.theme-selector-option .theme-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ============================================
+ * Responsive Adjustments
+ * ============================================ */
+
+@media (max-width: 640px) {
+  .theme-toggle-text {
+    display: none;
+  }
+
+  .theme-selector-option span:not(.theme-icon) {
+    display: none;
+  }
+
+  .theme-selector-option {
+    padding: var(--space-2);
+  }
+}
