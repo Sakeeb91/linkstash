@@ -5,8 +5,8 @@
  * Common components are reusable UI elements used throughout the application.
  *
  * @example
- * import { Button, Input, Modal } from '@/components/common';
+ * import { Button, Input, Modal, ThemeToggle } from '@/components/common';
  */
 
-// Components will be exported here as they are created
-export {};
+// Theme Toggle Component
+export { ThemeToggle, ThemeSelector } from './ThemeToggle';
