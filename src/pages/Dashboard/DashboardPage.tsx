@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { ThemeToggle } from '../../components/common';
 import { APP_NAME } from '../../utils/constants';
 import '../../styles/dashboard.css';
 
@@ -30,6 +31,7 @@ export function DashboardPage() {
         </div>
         <div className="header-actions">
           <span className="user-email">{user?.email}</span>
+          <ThemeToggle size="sm" />
           <button onClick={handleLogout} className="logout-button">
             Sign Out
           </button>
