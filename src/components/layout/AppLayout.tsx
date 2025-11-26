@@ -10,19 +10,14 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { ThemeToggle } from '../common';
 import { useAuth } from '../../hooks/useAuth';
 import { APP_NAME, ROUTES } from '../../utils/constants';
+import { protectedRoutes, type AppRouteConfig } from '../../routes/config';
 import '../../styles/app-shell.css';
-
-const NAV_LINKS = [
-  { to: ROUTES.DASHBOARD, label: 'Dashboard' },
-  { to: ROUTES.COLLECTIONS, label: 'Collections' },
-  { to: ROUTES.TAGS, label: 'Tags' },
-  { to: ROUTES.SEARCH, label: 'Search' },
-  { to: ROUTES.FAVORITES, label: 'Favorites' },
-  { to: ROUTES.ARCHIVE, label: 'Archive' },
-];
 
 export function AppLayout() {
   const { user, handleSignOut } = useAuth();
+  const navLinks = protectedRoutes.filter((route): route is AppRouteConfig & { label: string } =>
+    Boolean(route.label)
+  );
 
   const handleLogout = async () => {
     try {
@@ -48,16 +43,16 @@ export function AppLayout() {
         </div>
 
         <nav className="app-shell__nav" aria-label="Primary">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <NavLink
-              key={link.to}
-              to={link.to}
+              key={link.path}
+              to={link.path}
               className={({ isActive }) =>
                 `app-shell__nav-link ${isActive ? 'app-shell__nav-link--active' : ''}`
               }
-              end={link.to === ROUTES.DASHBOARD}
+              end={link.path === ROUTES.DASHBOARD}
             >
-              {link.label}
+              {link.label || link.path}
             </NavLink>
           ))}
         </nav>
