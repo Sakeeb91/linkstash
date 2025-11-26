@@ -1,0 +1,44 @@
+/**
+ * Loading State Styles
+ *
+ * Provides a consistent loading indicator for both full-screen and inline use.
+ */
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+.loading-screen--full {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.05), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(244, 114, 182, 0.08), transparent 25%),
+    linear-gradient(180deg, var(--color-bg-primary), var(--color-bg-secondary));
+}
+
+.loading-screen__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: loading-spin 0.9s linear infinite;
+}
+
+.loading-screen__message {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
