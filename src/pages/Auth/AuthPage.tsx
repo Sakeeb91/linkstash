@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { LoginForm, SignupForm, ConfirmSignup, ForgotPassword } from '../../components/auth';
+import { LoadingState } from '../../components/common';
 import { ROUTES, APP_NAME } from '../../utils/constants';
 import '../../styles/auth.css';
 
@@ -45,16 +46,7 @@ export function AuthPage() {
 
   // Show loading while checking auth
   if (isLoading) {
-    return (
-      <div className="auth-page">
-        <div className="auth-container">
-          <div className="loading-container">
-            <div className="loading-spinner" />
-            <p className="loading-text">Loading...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingState fullScreen message="Checking your session..." />;
   }
 
   // Don't render auth forms if already authenticated
