@@ -1,0 +1,70 @@
+/**
+ * Dark Theme
+ *
+ * Dark mode color overrides for LinkStash.
+ * Applied when [data-theme="dark"] is set on the document root.
+ */
+
+[data-theme='dark'] {
+  /* ============================================
+   * Background Colors
+   * ============================================ */
+
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-bg-elevated: #1e293b;
+  --color-bg-overlay: rgba(0, 0, 0, 0.7);
+
+  /* ============================================
+   * Text Colors
+   * ============================================ */
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #64748b;
+  --color-text-inverse: #0f172a;
+  --color-text-link: #60a5fa;
+  --color-text-link-hover: #93c5fd;
+
+  /* ============================================
+   * Border Colors
+   * ============================================ */
+
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  --color-border-focus: #3b82f6;
+
+  /* ============================================
+   * Interactive States
+   * ============================================ */
+
+  --color-hover-bg: rgba(255, 255, 255, 0.05);
+  --color-active-bg: rgba(255, 255, 255, 0.1);
+  --color-selected-bg: rgba(59, 130, 246, 0.2);
+
+  /* ============================================
+   * Semantic Colors (Adjusted for dark backgrounds)
+   * ============================================ */
+
+  --color-success-bg: rgba(16, 185, 129, 0.2);
+  --color-warning-bg: rgba(245, 158, 11, 0.2);
+  --color-error-bg: rgba(239, 68, 68, 0.2);
+  --color-info-bg: rgba(6, 182, 212, 0.2);
+
+  /* ============================================
+   * Shadows (Enhanced for dark mode)
+   * ============================================ */
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.2);
+
+  /* Glow effects for dark mode */
+  --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(139, 92, 246, 0.3);
+}
