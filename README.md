@@ -57,15 +57,19 @@ The app will be running at `http://localhost:3000`
 ### First Time Setup
 
 1. **Configure AWS CLI** (if not already done):
+
    ```bash
    aws configure
    ```
+
    Enter your AWS Access Key ID, Secret Access Key, and preferred region.
 
 2. **Start Amplify Sandbox**:
+
    ```bash
    npm run sandbox
    ```
+
    This will deploy the backend resources to your AWS account and generate `amplify_outputs.json`.
 
 3. **Run the Application**:
@@ -77,15 +81,15 @@ The app will be running at `http://localhost:3000`
 
 ## 🏗️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| **Frontend** | React 19, TypeScript, CSS Modules |
-| **Authentication** | AWS Cognito |
-| **API** | AWS AppSync (GraphQL) |
-| **Database** | Amazon DynamoDB |
-| **Storage** | Amazon S3 |
-| **Functions** | AWS Lambda |
-| **Hosting** | AWS Amplify Hosting |
+| Layer              | Technology                        |
+| ------------------ | --------------------------------- |
+| **Frontend**       | React 19, TypeScript, CSS Modules |
+| **Authentication** | AWS Cognito                       |
+| **API**            | AWS AppSync (GraphQL)             |
+| **Database**       | Amazon DynamoDB                   |
+| **Storage**        | Amazon S3                         |
+| **Functions**      | AWS Lambda                        |
+| **Hosting**        | AWS Amplify Hosting               |
 
 ---
 
@@ -110,6 +114,16 @@ linkstash/
 ├── docs/               # Documentation
 └── public/             # Static assets
 ```
+
+---
+
+## 🧭 Routing
+
+- Powered by React Router v7 with centralized `AppRoutes`
+- Public routes: `/login`, `/signup`, `/forgot-password`, `/confirm-signup`
+- Protected routes: `/dashboard`, `/collections`, `/collections/:id`, `/tags`, `/tags/:name`, `/search`, `/favorites`, `/archive`, `/settings`
+- Protected routes share the authenticated shell with navigation, theme toggle, and sign out
+- Unknown routes fall back to a friendly not-found page with navigation prompts
 
 ---
 
