@@ -6,24 +6,13 @@
  */
 
 import React, { type ReactNode } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { LoadingState } from '../common';
 import { ROUTES } from '../../utils/constants';
 
 interface ProtectedRouteProps {
-  children: ReactNode;
-}
-
-/**
- * Loading spinner component
- */
-function LoadingSpinner() {
-  return (
-    <div className="loading-container">
-      <div className="loading-spinner" />
-      <p className="loading-text">Loading...</p>
-    </div>
-  );
+  children?: ReactNode;
 }
 
 /**
@@ -35,10 +24,11 @@ function LoadingSpinner() {
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
+  const content = children ?? <Outlet />;
 
   // Show loading while checking auth state
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <LoadingState fullScreen message="Checking your session..." />;
   }
 
   // Redirect to login if not authenticated
@@ -47,7 +37,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />;
   }
 
-  return <>{children}</>;
+  return <>{content}</>;
 }
 
 export default ProtectedRoute;
