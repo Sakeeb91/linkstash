@@ -6,74 +6,68 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { ThemeToggle } from '../../components/common';
-import { APP_NAME } from '../../utils/constants';
+import { ComingSoonCard, PageHeader } from '../../components/common';
+import { APP_NAME, ROUTES } from '../../utils/constants';
 import '../../styles/dashboard.css';
 
 export function DashboardPage() {
-  const { user, handleSignOut } = useAuth();
-
-  const handleLogout = async () => {
-    try {
-      await handleSignOut();
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
+  const { user } = useAuth();
+  const greeting = user?.preferredUsername || user?.email || 'there';
 
   return (
-    <div className="dashboard">
-      <header className="dashboard-header">
-        <div className="header-brand">
-          <span className="logo-icon">🔗</span>
-          <span className="logo-text">{APP_NAME}</span>
-        </div>
-        <div className="header-actions">
-          <span className="user-email">{user?.email}</span>
-          <ThemeToggle size="sm" />
-          <button onClick={handleLogout} className="logout-button">
-            Sign Out
-          </button>
-        </div>
-      </header>
+    <div className="app-page dashboard-page">
+      <PageHeader
+        icon="🚀"
+        title="Dashboard"
+        description={`Welcome back, ${greeting}. Start building your personal knowledge base with ${APP_NAME}.`}
+        actions={
+          <div className="dashboard-actions">
+            <Link className="primary-button" to={ROUTES.COLLECTIONS}>
+              Build a collection
+            </Link>
+            <Link className="ghost-button" to={ROUTES.SEARCH}>
+              Explore search
+            </Link>
+          </div>
+        }
+      />
 
-      <main className="dashboard-main">
-        <div className="dashboard-welcome">
-          <h1>Welcome to {APP_NAME}!</h1>
-          <p className="welcome-subtitle">
-            {user?.preferredUsername
-              ? `Hello, ${user.preferredUsername}!`
-              : 'Your personal bookmark manager'}
+      <div className="page-grid">
+        <div className="page-card dashboard-hero">
+          <div className="dashboard-hero__badge">Early access</div>
+          <h2>Save, organize, discover.</h2>
+          <p>
+            LinkStash keeps your bookmarks organized with collections, tags, and powerful search.
+            We&apos;re shipping core link management features next.
           </p>
-        </div>
-
-        <div className="dashboard-content">
-          <div className="empty-state">
-            <div className="empty-state-icon">📚</div>
-            <h2>No bookmarks yet</h2>
-            <p>
-              Start organizing your web by adding your first bookmark.
-              <br />
-              Link management features are coming soon!
-            </p>
-            <div className="coming-soon-features">
-              <h3>Coming Soon:</h3>
-              <ul>
-                <li>📎 Add and manage bookmarks</li>
-                <li>🏷️ Tag-based organization</li>
-                <li>📁 Collections for grouping links</li>
-                <li>🔍 Powerful search functionality</li>
-                <li>⭐ Favorites and archives</li>
-              </ul>
+          <div className="dashboard-hero__meta">
+            <div>
+              <div className="meta-label">Account</div>
+              <div className="meta-value">{user?.email}</div>
+            </div>
+            <div>
+              <div className="meta-label">Status</div>
+              <div className="meta-value">Authenticated</div>
+            </div>
+            <div>
+              <div className="meta-label">Theme</div>
+              <div className="meta-value">Toggle in header</div>
             </div>
           </div>
         </div>
-      </main>
 
-      <footer className="dashboard-footer">
-        <p>&copy; 2025 {APP_NAME}. All rights reserved.</p>
-      </footer>
+        <ComingSoonCard
+          title="Core link management"
+          items={[
+            'Add links with automatic metadata extraction',
+            'Organize with tags and collections',
+            'Search and filter across all links',
+            'Favorite and archive for quick triage',
+          ]}
+        />
+      </div>
     </div>
   );
 }
