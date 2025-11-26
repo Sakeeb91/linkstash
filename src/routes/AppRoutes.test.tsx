@@ -6,6 +6,19 @@ import { useAuth } from '../hooks/useAuth';
 
 jest.mock('../hooks/useAuth');
 
+jest.mock('../components/layout', () => {
+  const actual = jest.requireActual('../components/layout');
+  const { Outlet } = jest.requireActual('react-router-dom');
+  return {
+    ...actual,
+    AppLayout: () => (
+      <div data-testid="app-layout">
+        <Outlet />
+      </div>
+    ),
+  };
+});
+
 // Mock pages to keep routing tests focused on navigation
 jest.mock('../pages/Auth', () => ({ AuthPage: () => <div>Auth Page</div> }));
 jest.mock('../pages/Dashboard', () => ({ DashboardPage: () => <div>Dashboard Page</div> }));
@@ -43,6 +56,13 @@ const createAuthValue = (overrides: Partial<AuthValue> = {}): AuthValue =>
     ...overrides,
   }) as AuthValue;
 
+const renderWithRouter = (initialRoute: string) =>
+  render(
+    <MemoryRouter initialEntries={[initialRoute]}>
+      <AppRoutes />
+    </MemoryRouter>
+  );
+
 describe('AppRoutes', () => {
   afterEach(() => {
     jest.clearAllMocks();
@@ -51,11 +71,7 @@ describe('AppRoutes', () => {
   it('redirects protected routes to login when unauthenticated', () => {
     mockUseAuth.mockReturnValue(createAuthValue());
 
-    render(
-      <MemoryRouter initialEntries={['/dashboard']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
+    renderWithRouter('/dashboard');
 
     expect(screen.getByText(/Auth Page/i)).toBeInTheDocument();
   });
@@ -63,11 +79,7 @@ describe('AppRoutes', () => {
   it('renders protected content when authenticated', () => {
     mockUseAuth.mockReturnValue(createAuthValue({ isAuthenticated: true }));
 
-    render(
-      <MemoryRouter initialEntries={['/dashboard']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
+    renderWithRouter('/dashboard');
 
     expect(screen.getByText(/Dashboard Page/i)).toBeInTheDocument();
   });
@@ -75,11 +87,7 @@ describe('AppRoutes', () => {
   it('routes home to dashboard when authenticated', () => {
     mockUseAuth.mockReturnValue(createAuthValue({ isAuthenticated: true }));
 
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
+    renderWithRouter('/');
 
     expect(screen.getByText(/Dashboard Page/i)).toBeInTheDocument();
   });
@@ -87,11 +95,7 @@ describe('AppRoutes', () => {
   it('renders not found for unknown routes', () => {
     mockUseAuth.mockReturnValue(createAuthValue({ isAuthenticated: true }));
 
-    render(
-      <MemoryRouter initialEntries={['/missing']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
+    renderWithRouter('/missing');
 
     expect(screen.getByText(/Not Found/i)).toBeInTheDocument();
   });
