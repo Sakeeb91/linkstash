@@ -156,6 +156,13 @@
   gap: var(--space-2);
 }
 
+.page-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
 .page-title {
   display: inline-flex;
   align-items: center;
@@ -220,6 +227,18 @@
   padding: 0;
   margin: 0;
   color: var(--color-text-secondary);
+}
+
+.coming-soon__list > div {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.coming-soon__list > div:last-child {
+  border-bottom: none;
 }
 
 /* ============================================

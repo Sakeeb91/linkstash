@@ -13,3 +13,9 @@ export { ThemeToggle, ThemeSelector } from './ThemeToggle';
 
 // Loading State Component
 export { LoadingState } from './LoadingState/LoadingState';
+
+// Page header for consistent titles
+export { PageHeader } from './PageHeader/PageHeader';
+
+// Coming soon placeholder card
+export { ComingSoonCard } from './ComingSoonCard/ComingSoonCard';
